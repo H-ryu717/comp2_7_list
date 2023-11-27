@@ -21,13 +21,24 @@ void initialize_list(list* l)
 // 先頭にデータを追加
 void push_front(list* l, node* p)
 {
-	// ToDo: リストにノードを追加するソースコードを実装する
+	if (!l || !p) {
+		return;
+	}
+
+	p->pNext = l->header;
+	l->header = p;
 }
 
 // pの次のノードを削除
 void remove_next(list* l, node* p)
 {
-	// ToDo: リストからpで指定したノードの次のノードを削除する
+	if (!l || !p || !p->pNext) {
+		return;
+	}
+
+	node* removedNode = p->pNext;
+	p->pNext = removedNode->pNext;
+	free(removedNode);
 }
 
 
